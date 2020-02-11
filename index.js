@@ -12,18 +12,16 @@ connect.then(() => {
 
     console.log('LOOK, YOU ARE CONNECTED correctly to the server');
 
-    const newCampsite = new Campsite({
+    Campsite.create({
         name: 'React Lake Campground',
         description: 'test'
-    });
-
-    newCampsite.save() // save document
+    })
     .then(campsite => {
-        console.log('SAVED',campsite);
+        console.log('** SAVED',campsite);
         return Campsite.find();
     })
     .then(campsites => {
-        console.log('DOCUMENT',campsites);
+        console.log('** DOCUMENT',campsites);
         return Campsite.deleteMany();
     })
     .then(() => {
